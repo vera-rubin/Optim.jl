@@ -3,6 +3,7 @@
 * Improve handling of alternative number types in univariate optimization
 * Add conditional likelihood example to docs
 * Improve Fminbox trace printing.
+* SAMIN returns its results again when it converges (it returned `nothing` since v1.12.0), and keeps searching until `x_abstol` is met instead of stopping once the objective settles
 
 # Optim v0.17.2 release notes
 * Fix some typos
