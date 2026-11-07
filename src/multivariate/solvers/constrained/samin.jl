@@ -304,7 +304,6 @@ function optimize(
                 if any(bounds .> x_tol)
                     x_converged = false
                     converge = 0 # no conv. if bounds too wide
-                    break
                 else
                     converge = 1
                     x_converged = true
