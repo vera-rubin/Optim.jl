@@ -36,4 +36,17 @@ Random.seed!(3288)
         @test Optim.f_converged(res)
         @test !Optim.iteration_limit_reached(res)
     end
+
+    @testset "Converges only once x_abstol is met, seed $seed" for seed in 1:5
+        Random.seed!(seed)
+        res = optimize(
+            x -> sum(abs2, x),
+            [-1.0, -1.0],
+            [1.0, 1.0],
+            [0.5, 0.5],
+            SAMIN(),
+            Optim.Options(iterations = 100_000, f_abstol = 1e-8, x_abstol = 1e-6),
+        )
+        @test Optim.x_converged(res)
+    end
 end
